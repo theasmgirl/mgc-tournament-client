@@ -166,9 +166,9 @@ socket.onmessage = async (event) => {
 
 async function setAvatar(user1, user2) {
     let data = await getDataSet(user1);
-    ava1 = `http://s.ppy.sh/a/${data.user_id}`
+    ava1 = `http://a.ppy.sh/${data.user_id}`
     data = await getDataSet(user2)
-    ava2 = `http://s.ppy.sh/a/${data.user_id}`
+    ava2 = `http://a.ppy.sh/${data.user_id}`
 }
 
 async function getDataSet(name) {
