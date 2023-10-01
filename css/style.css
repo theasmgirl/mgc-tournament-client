@@ -4,7 +4,7 @@
 	--right-avatar-line-color: #fff;
 	--left-score-bar-color: #db6767;
 	--right-score-bar-color: #335c67;
-	--chat-color: rgba(0 0 0 / .75);
+	--chat-color: rgba(0 0 0 / .9);
 	--bg: url('../static/main/background2.png');
 	--bg2: url('../static/main/background.png');
 	--font: url("../fonts/Rowdies-Regular.ttf");
