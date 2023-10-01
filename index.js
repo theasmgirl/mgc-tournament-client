@@ -1,5 +1,5 @@
 const file = [];
-let api;
+let api, beatmaps;
 async function getAPI() {
     try {
         const jsonData = await $.getJSON("api.json");
@@ -11,8 +11,21 @@ async function getAPI() {
         console.error("Could not read JSON file", error);
     }
 }
+
+async function loadBeatmaps() {
+    try {
+        const jsonData = await $.getJSON("./mappool/beatmaps.json");
+        jsonData.map((num) => {
+            file.push(num);
+        });
+        beatmaps = file;
+    } catch (error) {
+        console.error("Could not read JSON file", error);
+    }
+}
 // Not smart decision due to DOM loading before .json which resulting in API request being made without API key and failing.
 //getAPI();
+loadBeatmaps()
 
 const players = [
     {
@@ -112,6 +125,7 @@ let scoreScoreRight = document.getElementById("scoreScoreRight");
 let scoreScoreLeft = document.getElementById("scoreScoreLeft");
 let scoreCrownLeft = document.getElementById("scoreCrownLeft");
 let scoreCrownRight = document.getElementById("scoreCrownRight");
+let currentPick = document.getElementById("currentPick")
 
 // Chats
 let chats = document.getElementById("chats");
@@ -128,6 +142,7 @@ let toPool = document.getElementById("toPool");
 let refresh = document.getElementById("refreshiFrame");
 let overlayState = 0; // 0 = Gameplay, 1 = BanPick
 let tempOverlayState = 0;
+let currentPickTemp = false;
 
 // Main
 let main = document.getElementById("main");
@@ -319,6 +334,19 @@ socket.onmessage = (event) => {
         mapSR.innerHTML = `<p class="sr-text">SR</p>${tempSR}*`
         mapLength.innerHTML = `<p class="length-text">Length</p>${convertedLength}`
         mapDiffName.innerText = "[" + tempMapDiff + "]"
+
+        if(beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
+            currentPick = !currentPick
+            if(currentPick === 0) {
+                currentPick.innerText = `Pick by ${team1}`
+                currentPick.style.backgroundColor = '#dc6868'
+                currentPick.style.opacity = 1
+            } else {
+                currentPick.innerText = `Pick by ${team2}`
+                currentPick.style.backgroundColor = '#335c67'
+                currentPick.style.opacity = 1
+            }
+        }
 
         // Why??????
         /*setTimeout(() => {
@@ -670,3 +698,26 @@ togglePool = (state) => {
         });
     }
 };
+
+document.body.addEventListener("mousedown", function () {
+    document.body.addEventListener("click", function (event) {
+        if (event.ctrlKey) {
+            currentPick.style.opacity = 0
+        } else {
+            currentPick.innerText = `Pick by ${team1}`
+            currentPick.style.backgroundColor = '#dc6868'
+            currentPick.style.opacity = 1
+            currentPickTemp = false
+        }
+    });
+    document.body.addEventListener("contextmenu", function (event) {
+        if (event.ctrlKey) {
+            currentPick.style.opacity = 0
+        } else {
+            currentPick.innerText = `Pick by ${team2}`
+            currentPick.style.backgroundColor = '#335c67'
+            currentPick.style.opacity = 1
+            currentPickTemp = true
+        }
+    });
+});

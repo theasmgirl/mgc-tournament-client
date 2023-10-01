@@ -130,6 +130,22 @@
 	right: 130px;
 }
 
+#currentPick {
+	top: 100px;
+	left: 1080px;
+	height: 30px;
+	width: 260px;
+	background-color: black;
+	border-radius: 25px;
+	position: absolute;
+	font-family: Rowdies;
+	font-weight: 500 !important;
+	font-size: 24px;
+	text-align: center;
+	padding: 5px 0px;
+	opacity: 0;
+}
+
 .scorePointImage {
 	width: 44px;
 	height: 32px;
