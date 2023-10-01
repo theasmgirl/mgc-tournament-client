@@ -1,0 +1,750 @@
+:root {
+    --chat-color: rgba(0 0 0 / .375);
+    --text-color: #f6dfd2;
+}
+
+@font-face {
+    font-family: "Torus";
+    src: url("../fonts/Torus-Regular.otf");
+}
+
+@font-face {
+    font-family: "BeVietnamPro";
+    src: url("../fonts/BeVietnamPro-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Rowdies";
+    src: url("../../fonts/Rowdies-Regular.ttf");
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    overflow-y: hidden;
+    user-select: none;
+}
+
+#main {
+    background-image: url("../static/main/background.png");
+    background-size: 100%;
+    /* background-color: #15151e; */
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+}
+
+#mappoolContainer {
+    font-size: 30px;
+    font-family: Rowdies;
+    font-weight: normal;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+#mapThumbnail {
+    height: 80px;
+    width: 142px;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+#NM #mapThumbnail {
+    box-shadow: #cfaa95 0px 8px;
+    border: 2px solid #a97f57;
+}
+
+#HD #mapThumbnail {
+    box-shadow: #cbc4c0 0px 8px;
+    border: 2px solid #9d9d9d;
+}
+
+#HR #mapThumbnail {
+    box-shadow: #e38b87 0px 8px;
+    border: 2px solid #c05e5e;
+}
+
+#DT #mapThumbnail {
+    box-shadow: #658b93 0px 8px;
+    border: 2px solid #2a4a53;
+}
+
+#TB #mapThumbnail {
+    box-shadow: #a8e18e 0px 8px;
+    border: 2px solid #69a150;
+}
+
+#mapStats {
+    font-family: Rowdies;
+    font-weight: 500 !important;
+    margin-left: 10px;
+}
+
+#mapTitle {
+    margin: 0px;
+    font-size: 26px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 1.27em;
+    text-align: left;
+    margin-top: -6px;
+}
+
+#mapMapperLabel {
+    color: #f5dfd1;
+    display: flex;
+    font-size: 12px;
+    margin: 0px;
+    height: 1.57em;
+    padding: 4px 12px 0px 12px;
+    border-radius: 16px;
+}
+
+#NM #mapMapperLabel {
+    background-color: #aa7f57;
+}
+
+#HD #mapMapperLabel {
+    background-color: #a9a9a9;
+}
+
+#HR #mapMapperLabel {
+    background-color: #dc6868;
+}
+
+#DT #mapMapperLabel {
+    background-color: #335c67;
+}
+
+#TB #mapMapperLabel {
+    background-color: #69a150;
+}
+
+#NM .map {
+    color: #aa7f57;
+}
+
+#HD .map {
+    color: #a9a9a9;
+}
+
+#DT .map {
+    color: #335c67;
+}
+
+#HR .map {
+    color: #dc6868;
+}
+
+#TB .map {
+    color: #69a150;
+}
+
+#mapStats {
+    font-size: 18px;
+    flex: 50%;
+    min-width: 0px;
+}
+
+#firstRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+#secondRow {
+    display: flex;
+    justify-content: space-between;
+}
+
+#thirdRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#mapArtist {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 1.27em;
+    font-size: 20px;
+}
+
+#mapMapper {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 1.27em;
+    font-size: 20px;
+}
+
+#mapDifficulty {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 1.27em;
+    font-size: 18px;
+}
+
+#NM #mapDifficulty {
+    color: #6a4b2e;
+}
+
+#HD #mapDifficulty {
+    color: #585858;
+}
+
+#HR #mapDifficulty {
+    color: #8b3d3d;
+}
+
+#DT #mapDifficulty {
+    color: #1d3339;
+}
+
+#TB #mapDifficulty {
+    color: #31601c;
+}
+
+#mapMappoolID {
+    color: #f5dfd1;
+    font-size: 16px;
+    padding: 2px 10px 0px 10px;
+    border-radius: 10px;
+}
+
+#NM #mapMappoolID {
+    background-color: #6a4b2e;
+}
+
+#HD #mapMappoolID {
+    background-color: #585858;
+}
+
+#HR #mapMappoolID {
+    background-color: #8b3d3d;
+}
+
+#DT #mapMappoolID {
+    background-color: #1d3339;
+}
+
+#TB #mapMappoolID {
+    background-color: #31601c;
+}
+
+.mapContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.clicker {
+    width: 570px;
+    height: 90px;
+    margin: 8px;
+    transition: ease-in-out 300ms;
+}
+
+.map {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+    background-size: 100%;
+    background-position: center center;
+    border-radius: 10px;
+    transition: ease-in-out 200ms;
+    position: relative;
+    transition: opacity 0.5s !important;
+}
+
+.map .mapPickBan {
+    width: 105%;
+    height: 108%;
+    left: -15px;
+    top: -3px;
+    background-color: rgba(160, 17, 17, 0.7);
+    border: 2px solid #871010;
+    z-index: 2;
+    position: absolute;
+    border-radius: 20px;
+    text-align: center;
+    color: #fae5d7;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.mapPickBan p {
+    font-family: Rowdies;
+    margin-top: 12px;
+    font-weight: 500 !important;
+}
+
+.mapPickBan .username {
+    color: #fae5d7 !important;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+.mapInfo {
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #fff;
+    font-family: BeVietnamPro;
+    font-size: 16px;
+    font-weight: 700;
+    text-shadow: 0 2px 3px black;
+    user-select: none;
+    transition: ease-in-out 200ms;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 1;
+}
+
+.pickingStatus {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    width: 100px;
+    height: 20px;
+    color: #fff;
+    line-height: 30px;
+    font-size: 15px;
+    text-align: center;
+    user-select: none;
+    transition: ease-in-out 300ms;
+    opacity: 0;
+    border-radius: 25px;
+    text-shadow: 0 0 10px black;
+}
+
+.bannedRed {
+    position: absolute;
+    color: #de3950;
+    background-color: rgba(0, 0, 0, 0);
+    top: 0;
+    left: 0;
+    width: 550px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 25px;
+    opacity: 1;
+    border-radius: 25px;
+    text-align: center;
+    text-shadow: 0 0 10px black;
+    user-select: none;
+    transition: ease-in-out 300ms;
+    z-index: 2;
+}
+
+.bannedBlue {
+    position: absolute;
+    color: #2982e3;
+    background-color: rgba(0, 0, 0, 0);
+    top: 0;
+    left: 0;
+    width: 550px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 25px;
+    opacity: 1;
+    border-radius: 25px;
+    text-align: center;
+    text-shadow: 0 0 10px black;
+    user-select: none;
+    transition: ease-in-out 300ms;
+    z-index: 2;
+}
+
+.pickedRed {
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    width: 100px;
+    height: 20px;
+    color: #fff;
+    background-color: #de3950;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    user-select: none;
+    transition: ease-in-out 300ms;
+    opacity: 1;
+    border-radius: 25px;
+}
+
+.pickedBlue {
+    position: absolute;
+    bottom: -10px;
+    left: 0px;
+    width: 100px;
+    height: 20px;
+    color: #fff;
+    background-color: #2982e3;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    user-select: none;
+    transition: ease-in-out 300ms;
+    opacity: 1;
+    border-radius: 25px;
+}
+
+.modIcon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    right: -22px;
+    width: 44px;
+    height: 31px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-filter: drop-shadow(0px 2px 2px #000);
+    filter: drop-shadow(0px 2px 2px #000);
+    transition: ease-in-out 200ms;
+}
+
+/*Scrollbar*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    visibility: 1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+}
+
+#sideBar {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    background-color: #15151e;
+    width: 500px;
+    height: 720px;
+    color: white;
+    font-family: BeVietnamPro;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+#pickState {
+    margin: 10px;
+}
+
+.pickButton {
+    width: 300px;
+    height: 50px;
+    margin: 10px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    font-family: BeVietnamPro;
+    font-size: 25px;
+    font-weight: 700;
+    background-color: #2a2a3a;
+    border-radius: 10px;
+    transition: ease-in-out 200ms;
+}
+
+.pickButton:hover {
+    transform: translateY(-5px);
+}
+
+#pickButtonR:hover {
+    background-color: #de3950;
+    box-shadow: 0 5px 10px -5px #de3950;
+}
+
+#pickButtonB:hover {
+    background-color: #2982e3;
+    box-shadow: 0 5px 10px -5px #2982e3;
+}
+
+/* ==== MAIN CONTAINER ==== */
+
+#teamName {
+    font-size: 30px;
+    font-family: Rowdies;
+    font-weight: normal;
+    position: absolute;
+    width: 100%;
+    height: 120px;
+    /* background-color: #15151e; */
+    bottom: 70px;
+    /* box-shadow: 0 -5px 10px 0 rgba(0, 0, 0, 0.20); */
+}
+
+/* ==== NAME AND SCORE CONTAINER ==== */
+
+#nameScoreContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    height: 85px;
+}
+
+/* ==== TEAM NAME ==== */
+.teamName {
+    position: absolute;
+    font-family: Rowdies;
+    bottom: 30px;
+    padding: 5px 0;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
+    transition: ease-in-out 500ms;
+    border-radius: 25px;
+}
+
+#teamLeftName.teamName {
+    text-align: left;
+    left: 160px;
+    color: #dc6868;
+    /* background-color: #de3950; */
+}
+
+#teamRightName.teamName {
+    text-align: right;
+    right: 160px;
+    color: #335c67;
+    /* background-color: #2982e3; */
+}
+
+#teamLeftRank.teamName {
+    text-align: left;
+    left: 160px;
+    top: 25px;
+    color: #dc6868;
+    font-size: 20px;
+}
+
+#teamRightRank.teamName {
+    text-align: right;
+    right: 160px;
+    top: 25px;
+    color: #335c67;
+    font-size: 20px;
+}
+
+/* ==== AVATAR ==== */
+
+.avatar {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    top: 0;
+    bottom: 0;
+    background-size: 100%;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#avatarLeft {
+    left: 30px;
+}
+
+#avatarRight {
+    right: 30px;
+}
+
+#avatarLeft.avatar::after {
+    right: -25px;
+    background-color: var(--left-avatar-line-color);
+    box-shadow: 0 0 10px 0 var(--left-avatar-line-color);
+}
+
+#avatarRight.avatar::after {
+    left: -25px;
+    background-color: var(--right-avatar-line-color);
+    box-shadow: 0 0 10px 0 var(--right-avatar-line-color);
+}
+
+.background--light {
+    color: #161616;
+}
+
+.background--dark {
+    color: #fff;
+}
+
+/* ==== MATCH SCORE ===== */
+
+#scoreContainerLeft,
+#scoreContainerRight {
+    position: absolute;
+    display: flex;
+    height: 15px;
+    top: 80px;
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+    transition: ease-in-out 100ms;
+}
+
+#scoreContainerLeft {
+    justify-content: flex-end;
+    left: 160px;
+}
+
+#scoreContainerRight {
+    /* justify-content: flex-end; */
+    right: 160px;
+}
+
+.scorePointImage {
+    width: 44px;
+    height: 32px;
+}
+
+.scoreLeft,
+.scoreRight {
+    transition: ease-in-out 100ms;
+}
+
+.scoreLeft {
+    flex-wrap: wrap-reverse;
+    margin-right: 10px;
+}
+
+.scoreRight {
+    /* flex-wrap: wrap-reverse; */
+    margin-left: 10px;
+}
+
+#chats {
+    opacity: 1;
+    background: var(--chat-color);
+    position: absolute;
+    left: 520px;
+    bottom: 10px;
+    width: 850px;
+    height: 160px;
+    margin: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px;
+    font-family: "BeVietnamPro", monospace;
+    transition: ease-in-out 500ms;
+}
+
+.chat {
+    display: flex;
+    text-align: left;
+}
+
+.chatTime {
+    width: 5%;
+    color: silver;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.wholeChat {
+    width: 95%;
+    display: flex;
+}
+
+.chatName {
+    color: white;
+    white-space: nowrap;
+    width: max-content;
+}
+
+.chatText {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: hidden;
+    color: #f5dfd1;
+}
+
+.unknown {
+    color: yellow;
+}
+
+.bot {
+    color: #ff66aa;
+}
+
+.left {
+    color: #1fd0ed;
+}
+
+.right {
+    color: #ed1855;
+}
+
+/*Scrollbar*/
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    visibility: 0;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: none;
+    border-radius: 10px;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+}
