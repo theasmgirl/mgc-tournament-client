@@ -444,12 +444,12 @@ socket.onmessage = async (event) => {
                 data.tourney.manager.chat[i].name + ":\xa0";
             chatText.innerText = data.tourney.manager.chat[i].messageBody;
 
-            if (
+            /*if (
                 data.tourney.manager.chat[i].messageBody.includes(
                     "Next Pick"
                 )
             )
-                togglePool(true);
+                togglePool(true);*/
 
             chatName.classList.add(tempClass);
 

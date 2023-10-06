@@ -5,7 +5,7 @@
 
 #chats {
 	opacity: 1;
-	background: var(--chat-color);
+	background: #664c3f;
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -44,6 +44,7 @@
 	color: white;
 	white-space: nowrap;
 	width: max-content;
+	font-weight: 700;
 }
 
 .chatText {
@@ -53,7 +54,7 @@
 }
 
 .unknown {
-	color: yellow;
+	color: #73f138;
 }
 
 .bot {
@@ -61,11 +62,11 @@
 }
 
 .left {
-	color: #1fd0ed;
+	color: #ff5050;
 }
 
 .right {
-	color: #ed1855;
+	color: #56ccec;
 }
 
 /*Scrollbar*/

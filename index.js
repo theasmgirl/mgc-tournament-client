@@ -1,7 +1,8 @@
-const file = [];
+
 let api, beatmaps;
 async function getAPI() {
     try {
+        const file = [];
         const jsonData = await $.getJSON("api.json");
         jsonData.map((num) => {
             file.push(num);
@@ -14,6 +15,7 @@ async function getAPI() {
 
 async function loadBeatmaps() {
     try {
+        const file = [];
         const jsonData = await $.getJSON("./mappool/beatmaps.json");
         jsonData.map((num) => {
             file.push(num);
@@ -143,6 +145,7 @@ let refresh = document.getElementById("refreshiFrame");
 let overlayState = 0; // 0 = Gameplay, 1 = BanPick
 let tempOverlayState = 0;
 let currentPickTemp = false;
+let currentPickChange = false;
 
 // Main
 let main = document.getElementById("main");
@@ -336,8 +339,8 @@ socket.onmessage = (event) => {
         mapDiffName.innerText = "[" + tempMapDiff + "]"
 
         if(beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
-            currentPick = !currentPick
-            if(currentPick === 0) {
+            currentPickTemp = !currentPickTemp
+            if(currentPickTemp === 0) {
                 currentPick.innerText = `Pick by ${team1}`
                 currentPick.style.backgroundColor = '#dc6868'
                 currentPick.style.opacity = 1
@@ -541,10 +544,10 @@ socket.onmessage = (event) => {
             }
         }
     }
+
     if (!scoreVisibleTemp && tournamentDebugger === 0) {
         if (chatLen != data.tourney.manager?.chat?.length && data.tourney.manager?.chat !== null) {
             // There's new chats that haven't been updated
-            console.log(data.tourney.manager.chat);
             if (
                 chatLen == 0 ||
                 (chatLen > 0 && chatLen > data.tourney.manager.chat.length)
@@ -576,12 +579,12 @@ socket.onmessage = (event) => {
                     data.tourney.manager.chat[i].name + ":\xa0";
                 chatText.innerText = data.tourney.manager.chat[i].messageBody;
 
-                if (
+                /*if (
                     data.tourney.manager.chat[i].messageBody.includes(
                         "Next Pick"
                     )
                 )
-                    togglePool(true);
+                    togglePool(true);*/
 
                 chatName.classList.add(tempClass);
 
@@ -598,7 +601,7 @@ socket.onmessage = (event) => {
             chats.scrollTop = chats.scrollHeight;
         }
     } else {
-        togglePool(false);
+        //togglePool(false);
     }
 };
 

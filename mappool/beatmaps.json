@@ -1,22 +1,22 @@
 [
-    { "beatmapId": 2123199, "mods": "NM", "Id": "NM1" },
-    { "beatmapId": 2079597, "mods": "NM", "Id": "NM2" },
-    { "beatmapId": 3903779, "mods": "NM", "Id": "NM3" },
-    { "beatmapId": 4210354, "mods": "NM", "Id": "NM4" },
-    { "beatmapId": 4116267, "mods": "NM", "Id": "NM5" },
-    { "beatmapId": 3320342, "mods": "NM", "Id": "NM6" },
+    { "beatmapId": 3019994, "mods": "NM", "Id": "NM1" },
+    { "beatmapId": 2069999, "mods": "NM", "Id": "NM2" },
+    { "beatmapId": 3721150, "mods": "NM", "Id": "NM3" },
+    { "beatmapId": 4073562, "mods": "NM", "Id": "NM4" },
+    { "beatmapId": 3792530, "mods": "NM", "Id": "NM5" },
+    { "beatmapId": 715044,  "mods": "NM", "Id": "NM6" },
 
-    { "beatmapId": 3793495, "mods": "HD", "Id": "HD1" },
-    { "beatmapId": 2374098, "mods": "HD", "Id": "HD2" },
-    { "beatmapId": 3775432, "mods": "HD", "Id": "HD3" },
+    { "beatmapId": 4186126, "mods": "HD", "Id": "HD1" },
+    { "beatmapId": 4267100, "mods": "HD", "Id": "HD2" },
+    { "beatmapId": 3075536, "mods": "HD", "Id": "HD3" },
 
-    { "beatmapId": 2084319, "mods": "HR", "Id": "HR1" },
-    { "beatmapId": 2656501, "mods": "HR", "Id": "HR2" },
-    { "beatmapId": 3740462, "mods": "HR", "Id": "HR3" },
+    { "beatmapId": 281390,  "mods": "HR", "Id": "HR1" },
+    { "beatmapId": 1424660, "mods": "HR", "Id": "HR2" },
+    { "beatmapId": 4329073, "mods": "HR", "Id": "HR3" },
 
-    { "beatmapId": 4320707, "mods": "DT", "Id": "DT1" },
-    { "beatmapId": 2036902, "mods": "DT", "Id": "DT2" },
-    { "beatmapId": 887095, "mods": "DT", "Id": "DT3" },
+    { "beatmapId": 3801465, "mods": "DT", "Id": "DT1" },
+    { "beatmapId": 2125262, "mods": "DT", "Id": "DT2" },
+    { "beatmapId": 93947,   "mods": "DT", "Id": "DT3" },
 
-    { "beatmapId": 3333745, "mods": "TB", "Id": "TB" }
+    { "beatmapId": 3481587, "mods": "TB", "Id": "TB"  }
 ]
