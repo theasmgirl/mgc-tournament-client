@@ -59,9 +59,6 @@ let avaSet = false
 socket.onmessage = async (event) => {
     let data = JSON.parse(event.data);
 
-    data.tourney.manager.teamName.left = "mrekk"
-    data.tourney.manager.teamName.right = "fFrequence"
-
     if(!avaSet) {
         setAvatar(data.tourney.manager.teamName.left, data.tourney.manager.teamName.right)
         avaSet = true
