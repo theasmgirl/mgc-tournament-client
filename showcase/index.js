@@ -10,8 +10,6 @@ let beatmaps;
 (async () => {
 	$.ajaxSetup({ cache: false });
 	beatmaps = (await $.getJSON('maps.json'));
-	console.log("yes");
-	console.log(beatmaps);
 })();
 
 socket.onopen = () => { console.log('Successfully Connected'); };
@@ -37,7 +35,6 @@ let len;
 
 socket.onmessage = event => {
 	let data = JSON.parse(event.data);
-	console.log(data);
 	if (tempImg !== data.menu.bm.path.full) {
 		tempImg = data.menu.bm.path.full;
 		data.menu.bm.path.full = data.menu.bm.path.full.replace(/#/g, '%23').replace(/%/g, '%25').replace(/\\/g, '/');
