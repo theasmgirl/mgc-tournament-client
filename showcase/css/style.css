@@ -50,7 +50,13 @@ html {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	z-index: 0;
-	opacity: 0.8;
+	opacity: 0.9;
+	margin-top: -121px;
+}
+
+#logo {
+	text-align: left;
+	padding: 8px;
 }
 
 #title {
@@ -73,7 +79,7 @@ html {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	z-index: 0;
-	opacity: 0.8;
+	opacity: 0.9;
 }
 
 .stats-container {
@@ -85,6 +91,13 @@ html {
 	color: #ffffff;
 	text-shadow: 0 0 5px rgba(0, 0, 0, 0.80);
 	letter-spacing: 1px;
+}
+
+#round-pick {
+	text-align: left;
+	margin-top: 50px;
+	margin-bottom: -68px;
+	opacity: .95;
 }
 
 b {

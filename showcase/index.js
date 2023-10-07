@@ -5,12 +5,7 @@ let title = document.getElementById('title');
 let diff = document.getElementById('diff');
 let artist = document.getElementById('artist');
 let replay = document.getElementById('replay');
-
-let beatmaps;
-(async () => {
-	$.ajaxSetup({ cache: false });
-	beatmaps = (await $.getJSON('maps.json'));
-})();
+let roundPick = document.getElementById('round-pick');
 
 socket.onopen = () => { console.log('Successfully Connected'); };
 
@@ -73,4 +68,38 @@ socket.onmessage = event => {
 		document.getElementById('stats-1').innerHTML = `CS <b>${cs}</b> / AR <b>${ar}</b> / OD <b>${od}</b>`;
 		document.getElementById('stats-2').innerHTML = `BPM <b>${bpm}</b> / Length <b>${songlength}</b> / SR <b>${sr}★</b>`;
 	}
+	let beatmaps;
+	(async () => {
+		$.ajaxSetup({ cache: false });
+		beatmaps = (await $.getJSON('maps.json'));
+		const round = beatmaps.Round;
+		beatmaps = beatmaps[round];
+		roundPick.innerHTML = "Not in Mappool";
+		roundPick.style.color = "#ffffff";
+		for (let i = 0; i < beatmaps.length; i++) {
+			if (beatmaps[i].title === data.menu.bm.metadata.title) {
+				roundPick.innerHTML = `${round} ${beatmaps[i].id}`;
+				switch (beatmaps[i].id.substr(0, 2)) {
+					case "NM":
+						roundPick.style.color = "#a4c2f4";
+						break;
+					case "HD":
+						roundPick.style.color = "#ffe599";
+						break;
+					case "HR":
+						roundPick.style.color = "#ea9999";
+						break;
+					case "DT":
+						roundPick.style.color = "#b4a7d6";
+						break;
+					case "TB":
+						roundPick.style.color = "#b6d7a8";
+						break;
+					default:
+						break;
+				}
+				return;
+			}
+		}
+	})();
 }
