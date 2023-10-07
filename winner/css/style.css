@@ -46,3 +46,20 @@ html {
     border-radius: 40px;
     text-align: left !important;
 }
+
+#stage {
+    position: absolute;
+    left: 1110px;
+    top: 350px;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.winner-red {
+    color: #335c67;
+}
+
+.winner-blue {
+    color: #dc6868;
+}

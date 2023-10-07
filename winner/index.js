@@ -27,6 +27,7 @@ async function getAPI() {
 let main = document.getElementById("main")
 let avatar = document.getElementById("avatar")
 let username = document.getElementById("username") 
+let stage = document.getElementById("stage")
 
 // START
 let socket = new ReconnectingWebSocket("ws://127.0.0.1:24050/ws");
@@ -58,6 +59,9 @@ let avaSet = false
 socket.onmessage = async (event) => {
     let data = JSON.parse(event.data);
 
+    data.tourney.manager.teamName.left = "mrekk"
+    data.tourney.manager.teamName.right = "fFrequence"
+
     if(!avaSet) {
         setAvatar(data.tourney.manager.teamName.left, data.tourney.manager.teamName.right)
         avaSet = true
@@ -68,11 +72,13 @@ socket.onmessage = async (event) => {
         main.style.backgroundImage = `url("./static/main/red.png")`
         avatar.style.backgroundImage = `url("${ava1}")`
         username.innerText = data.tourney.manager.teamName.left
+        stage.setAttribute("class", "winner-red")
     } else if(data.tourney.manager.stars.left < data.tourney.manager.stars.right && currentWinner !== 1) {
         currentWinner = 1
         main.style.backgroundImage = `url("./static/main/blue.png")`
         avatar.style.backgroundImage = `url("${ava2}")`
         username.innerText = data.tourney.manager.teamName.right
+        stage.setAttribute("class", "winner-blue")
     }
 
     /*if (bestOfTemp !== data.tourney.manager.bestOF) {
