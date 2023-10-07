@@ -67,7 +67,7 @@ const players = [
         seed: "9"
     },
     {
-        player: "Arnold24x24",
+        player: "[MG]Arnold24x24",
         seed: "10"
     },
     {
@@ -338,9 +338,9 @@ socket.onmessage = (event) => {
         mapLength.innerHTML = `<p class="length-text">Length</p>${convertedLength}`
         mapDiffName.innerText = "[" + tempMapDiff + "]"
 
-        if(beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
+        if (beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
             currentPickTemp = !currentPickTemp
-            if(currentPickTemp === 0) {
+            if (currentPickTemp === 0) {
                 currentPick.innerText = `Pick by ${team1}`
                 currentPick.style.backgroundColor = '#dc6868'
                 currentPick.style.opacity = 1

@@ -1,0 +1,92 @@
+@font-face {
+	font-family: "Rowdies";
+	src: url("../fonts/Rowdies-Regular.ttf");
+}
+
+body,
+html {
+	padding: 0;
+	margin: 0;
+	overflow-y: hidden;
+}
+
+#main {
+	width: 600px;
+}
+
+#map-container {
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	background-size: cover;
+	background-position: center;
+	z-index: -1;
+	color: rgb(245, 245, 255);
+	font-family: Rowdies;
+	text-align: right;
+	text-shadow: 0 0 8px rgba(0, 0, 0, 0.30);
+	border-right: 12px solid #cc5959;
+}
+
+#overlay {
+	position: relative;
+	height: 200px;
+	width: 100%;
+	z-index: 0;
+	background: linear-gradient(90deg, #335c6788, #aa7f5788);
+}
+
+#replay {
+	margin-bottom: 12px;
+}
+
+#artist {
+	padding-top: 8px;
+	margin-bottom: -2px;
+	margin-right: 12px;
+	margin-left: 8px;
+	font-size: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	z-index: 0;
+	opacity: 0.8;
+}
+
+#title {
+	margin-right: 12px;
+	margin-bottom: -3px;
+	margin-left: 8px;
+	font-size: 30px;
+	font-family: Rowdies;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	z-index: 0;
+}
+
+#diff {
+	margin-right: 12px;
+	margin-left: 8px;
+	font-size: 21px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	z-index: 0;
+	opacity: 0.8;
+}
+
+.stats-container {
+	font-size: 24px;
+	line-height: 28px;
+	margin: 12px;
+	font-family: Rowdies;
+	text-align: right;
+	color: #ffffff;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.80);
+	letter-spacing: 1px;
+}
+
+b {
+	font-family: Rowdies;
+}
