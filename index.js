@@ -238,7 +238,6 @@ function formatNumber(number) {
 
 socket.onmessage = (event) => {
     let data = JSON.parse(event.data);
-    console.log(data);
     setTimeout(() => {
         if (!mappoolSetup) {
             mappoolSetup = 1;
