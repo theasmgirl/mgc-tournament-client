@@ -303,6 +303,18 @@ socket.onmessage = (event) => {
 
         mapThumbnail.style.backgroundSize = "cover"
     }
+    if(tempMapID !== data.menu.bm.id) {
+        currentPickTemp = !currentPickTemp
+        if (currentPickTemp === false) {
+            currentPick.innerText = `Pick by ${team1}`
+            currentPick.style.backgroundColor = '#dc6868'
+            currentPick.style.opacity = 1
+        } else {
+            currentPick.innerText = `Pick by ${team2}`
+            currentPick.style.backgroundColor = '#335c67'
+            currentPick.style.opacity = 1
+        }
+    }
     if (
         tempAR !== data.menu.bm.stats.AR ||
         tempMapID !== data.menu.bm.id ||
@@ -353,16 +365,6 @@ socket.onmessage = (event) => {
                 currentPick.style.opacity = 1
             }
         }*/
-        currentPickTemp = !currentPickTemp
-        if (currentPickTemp === false) {
-            currentPick.innerText = `Pick by ${team1}`
-            currentPick.style.backgroundColor = '#dc6868'
-            currentPick.style.opacity = 1
-        } else {
-            currentPick.innerText = `Pick by ${team2}`
-            currentPick.style.backgroundColor = '#335c67'
-            currentPick.style.opacity = 1
-        }
 
         // Why??????
         /*setTimeout(() => {
