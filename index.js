@@ -144,7 +144,7 @@ let toPool = document.getElementById("toPool");
 let refresh = document.getElementById("refreshiFrame");
 let overlayState = 0; // 0 = Gameplay, 1 = BanPick
 let tempOverlayState = 0;
-let currentPickTemp = false;
+let currentPickTemp = null;
 let currentPickChange = false;
 
 // Main
@@ -236,14 +236,31 @@ function formatNumber(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }
 
+function numberToFixed(number, dec = 2) {
+    return Math.round(number * Math.pow(10, dec)) / Math.pow(10, dec)
+}
+
+function formatSeconds(seconds) {
+    const h = Math.floor(seconds / 3600)
+    const m = Math.floor(seconds % 3600 / 60)
+    const s = Math.floor(seconds % 3600 % 60)
+
+    const hs = (h < 10) ? ('0' + h) : (h)
+    const ms = (m < 10) ? ('0' + m) : (m)
+    const ss = (s < 10) ? ('0' + s) : (s)
+
+    return (h > 0) ? (hs + ':' + ms + ':' + ss) : (ms + ':' + ss)
+}
+
 socket.onmessage = (event) => {
     let data = JSON.parse(event.data);
-    setTimeout(() => {
+    /*setTimeout(() => {
         if (!mappoolSetup) {
             mappoolSetup = 1;
             iFrameInitiate();
         }
-    }, 1000);
+    }, 1000);*/
+    if(!beatmaps) return
     if (
         scoreVisibleTemp !== data.tourney.manager.bools.scoreVisible ||
         tempOverlayState !== overlayState ||
@@ -303,7 +320,7 @@ socket.onmessage = (event) => {
 
         mapThumbnail.style.backgroundSize = "cover"
     }
-    if(tempMapID !== data.menu.bm.id) {
+    if(tempMapID !== data.menu.bm.id && currentPickTemp !== null) {
         currentPickTemp = !currentPickTemp
         if (currentPickTemp === false) {
             currentPick.innerText = `Pick by ${team1}`
@@ -315,24 +332,78 @@ socket.onmessage = (event) => {
             currentPick.style.opacity = 1
         }
     }
-    if (
-        tempAR !== data.menu.bm.stats.AR ||
-        tempMapID !== data.menu.bm.id ||
-        tempSR !== data.menu.bm.stats.fullSR ||
-        tempLength !== data.menu.bm.time.full
-    ) {
+    if (tempMapID !== data.menu.bm.id) {
         tempMapID = data.menu.bm.id;
         tempMapArtist = data.menu.bm.metadata.artist;
         tempMapTitle = data.menu.bm.metadata.title;
         tempMapDiff = data.menu.bm.metadata.difficulty;
         tempMapper = data.menu.bm.metadata.mapper;
-        tempCS = data.menu.bm.stats.CS;
+
+        // Base mods on the mappool if possible.
+        let mods = 0
+        const mappoolMap = beatmaps.find(beatmap => beatmap.beatmapId === tempMapID)
+        if(mappoolMap) {
+            if(mappoolMap.mods === "DT")
+                mods = 64
+            else if(mappoolMap.mods === "HR")
+                mods = 16
+        } else {
+            if (data.tourney.ipcClients[0].gameplay.mods.str.includes("DT"))
+                mods = 64
+            else if (data.tourney.ipcClients[0].gameplay.mods.str.includes("HR"))
+                mods = 16
+        }
+
+        // Retrieve beatmap attributes from osu!API
+        getBeatmapAttributes(tempMapID, mods).then(map => {
+            let cs = parseFloat(map.diff_size)
+            let ar = parseFloat(map.diff_approach)
+            let od = parseFloat(map.diff_overall)
+            let hp = parseFloat(map.diff_speed)
+            const stars = parseFloat(map.difficultyrating)
+            let bpm = parseFloat(map.bpm)
+            let length = parseInt(map.total_length)
+
+            // Adjust beatmap attributes accordingly.
+            if((mods & 16) > 0) {
+                cs = Math.min(cs * 1.3, 10)
+                ar = Math.min(ar * 1.4, 10)
+                od = Math.min(od * 1.4, 10)
+                hp = Math.min(hp * 1.4, 10)
+            }
+
+            if((mods & 64) > 0) {
+                bpm *= 1.5
+                length /= 1.5
+
+                let arms = (ar < 6) ? 800 + ((5 - ar) * 80) : 800 - ((ar - 5) * 100)
+                ar = Math.min((arms <= 1200) ? 5 + ((1200 - arms) / 150) : 5 - ((1200 - arms) / 120), 11)
+                let odms = 53 - (od * 4)
+                od = Math.min((79.5 - odms) / 6, 11)
+            }
+
+            let convertedLength = new Date(length);
+            convertedLength = toMins(convertedLength);
+
+            mapName.innerText = tempMapTitle;
+            mapArtist.innerText = tempMapArtist
+            mapMapper.innerText = tempMapper
+            mapCS.innerHTML = "CS: " + numberToFixed(cs)
+            mapAR.innerHTML = "AR: " + numberToFixed(ar)
+            mapOD.innerHTML = "OD: " + numberToFixed(od)
+            mapBPM.innerHTML = "BPM: " + numberToFixed(bpm, 1)
+            mapSR.innerHTML = `<p class="sr-text">SR</p>${numberToFixed(stars)}*`
+            mapLength.innerHTML = `<p class="length-text">Length</p>${formatSeconds(length)}`
+            mapDiffName.innerText = "[" + tempMapDiff + "]"
+        }).catch(console.error)
+
+        /*tempCS = data.menu.bm.stats.CS;
         tempAR = data.menu.bm.stats.AR;
         tempOD = data.menu.bm.stats.OD;
         tempHP = data.menu.bm.stats.HP;
         tempSR = data.menu.bm.stats.fullSR;
         tempLength = data.menu.bm.time.full;
-        if (data.tourney.ipcClients[0].gameplay.mods.str.includes("DT")) {
+        if (data.menu.mods.str.includes("DT")) {
             tempLength = parseInt(tempLength) * 2 / 3;
         }
         let convertedLength = new Date(tempLength);
@@ -351,7 +422,7 @@ socket.onmessage = (event) => {
         mapBPM.innerHTML = "BPM: " + tempBPM
         mapSR.innerHTML = `<p class="sr-text">SR</p>${tempSR}*`
         mapLength.innerHTML = `<p class="length-text">Length</p>${convertedLength}`
-        mapDiffName.innerText = "[" + tempMapDiff + "]"
+        mapDiffName.innerText = "[" + tempMapDiff + "]"*/
 
         /*if (beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
             currentPickTemp = !currentPickTemp
@@ -647,6 +718,26 @@ async function getDataSet(name) {
                 params: {
                     k: api,
                     u: name,
+                },
+            })
+        )["data"];
+        return data.length !== 0 ? data[0] : null;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function getBeatmapAttributes(beatmapId, mods) {
+    try {
+        if (!api) await getAPI()
+
+        const data = (
+            await axios.get("/get_beatmaps", {
+                baseURL: "https://osu.ppy.sh/api",
+                params: {
+                    k: api,
+                    b: beatmapId,
+                    mods: mods
                 },
             })
         )["data"];
