@@ -55,7 +55,7 @@ const players = [
         seed: "9"
     },
     {
-        player: "Arnold24x24",
+        player: "[MG24]Arnold24x24",
         seed: "10"
     },
     {

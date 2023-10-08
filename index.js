@@ -321,6 +321,16 @@ socket.onmessage = (event) => {
         mapThumbnail.style.backgroundSize = "cover"
     }
     if(tempMapID !== data.menu.bm.id && currentPickTemp !== null) {
+        // Check for tiebreaker
+        if(data.tourney.manager.stars.left === Math.ceil(data.tourney.manager.bestOF / 2) - 1 &&
+            data.tourney.manager.stars.right === Math.ceil(data.tourney.manager.bestOF / 2) - 1)
+        {
+            currentPick.innerText = `Tiebreaker`
+            currentPick.style.backgroundColor = '#69a150'
+            currentPick.style.opacity = 1
+            return
+        }
+
         currentPickTemp = !currentPickTemp
         if (currentPickTemp === false) {
             currentPick.innerText = `Pick by ${team1}`
