@@ -355,7 +355,7 @@ socket.onmessage = (event) => {
             }
         }*/
         currentPickTemp = !currentPickTemp
-        if (currentPickTemp === 0) {
+        if (currentPickTemp === false) {
             currentPick.innerText = `Pick by ${team1}`
             currentPick.style.backgroundColor = '#dc6868'
             currentPick.style.opacity = 1
