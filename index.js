@@ -382,9 +382,6 @@ socket.onmessage = (event) => {
                 od = Math.min((79.5 - odms) / 6, 11)
             }
 
-            let convertedLength = new Date(length);
-            convertedLength = toMins(convertedLength);
-
             mapName.innerText = tempMapTitle;
             mapArtist.innerText = tempMapArtist
             mapMapper.innerText = tempMapper
