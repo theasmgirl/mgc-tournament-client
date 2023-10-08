@@ -58,6 +58,9 @@ socket.onmessage = event => {
 		sr = data.menu.bm.stats.fullSR;
 		bpm = data.menu.bm.stats.BPM.max;
 		len = data.menu.bm.time.full;
+		if (data.menu.mods.str.includes("DT")) {
+			len = parseInt(len) * 2 / 3;
+		}
 		rawlength = len / 1000;
 		let mins = Math.trunc(rawlength / 60);
 		let secs = Math.trunc(rawlength % 60);
