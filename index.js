@@ -304,6 +304,7 @@ socket.onmessage = (event) => {
         mapThumbnail.style.backgroundSize = "cover"
     }
     if (
+        tempAR !== data.menu.bm.stats.AR ||
         tempMapID !== data.menu.bm.id ||
         tempSR !== data.menu.bm.stats.fullSR ||
         tempLength !== data.menu.bm.time.full
@@ -320,6 +321,9 @@ socket.onmessage = (event) => {
         tempHP = data.menu.bm.stats.HP;
         tempSR = data.menu.bm.stats.fullSR;
         tempLength = data.menu.bm.time.full;
+        if (data.menu.mods.str.includes("DT")) {
+            tempLength = parseInt(tempLength) * 2 / 3;
+        }
         let convertedLength = new Date(tempLength);
         convertedLength = toMins(convertedLength);
 
