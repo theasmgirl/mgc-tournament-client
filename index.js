@@ -338,7 +338,7 @@ socket.onmessage = (event) => {
         mapLength.innerHTML = `<p class="length-text">Length</p>${convertedLength}`
         mapDiffName.innerText = "[" + tempMapDiff + "]"
 
-        if (beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
+        /*if (beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
             currentPickTemp = !currentPickTemp
             if (currentPickTemp === 0) {
                 currentPick.innerText = `Pick by ${team1}`
@@ -349,6 +349,16 @@ socket.onmessage = (event) => {
                 currentPick.style.backgroundColor = '#335c67'
                 currentPick.style.opacity = 1
             }
+        }*/
+        currentPickTemp = !currentPickTemp
+        if (currentPickTemp === 0) {
+            currentPick.innerText = `Pick by ${team1}`
+            currentPick.style.backgroundColor = '#dc6868'
+            currentPick.style.opacity = 1
+        } else {
+            currentPick.innerText = `Pick by ${team2}`
+            currentPick.style.backgroundColor = '#335c67'
+            currentPick.style.opacity = 1
         }
 
         // Why??????
