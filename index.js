@@ -304,6 +304,7 @@ socket.onmessage = (event) => {
         mapThumbnail.style.backgroundSize = "cover"
     }
     if (
+        tempCS !== data.menu.bm.stats.CS ||
         tempAR !== data.menu.bm.stats.AR ||
         tempMapID !== data.menu.bm.id ||
         tempSR !== data.menu.bm.stats.fullSR ||
