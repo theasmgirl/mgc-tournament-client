@@ -238,6 +238,7 @@ function formatNumber(number) {
 
 socket.onmessage = (event) => {
     let data = JSON.parse(event.data);
+    console.log(data);
     setTimeout(() => {
         if (!mappoolSetup) {
             mappoolSetup = 1;
@@ -304,7 +305,6 @@ socket.onmessage = (event) => {
         mapThumbnail.style.backgroundSize = "cover"
     }
     if (
-        tempCS !== data.menu.bm.stats.CS ||
         tempAR !== data.menu.bm.stats.AR ||
         tempMapID !== data.menu.bm.id ||
         tempSR !== data.menu.bm.stats.fullSR ||
@@ -315,14 +315,13 @@ socket.onmessage = (event) => {
         tempMapTitle = data.menu.bm.metadata.title;
         tempMapDiff = data.menu.bm.metadata.difficulty;
         tempMapper = data.menu.bm.metadata.mapper;
-
         tempCS = data.menu.bm.stats.CS;
         tempAR = data.menu.bm.stats.AR;
         tempOD = data.menu.bm.stats.OD;
         tempHP = data.menu.bm.stats.HP;
         tempSR = data.menu.bm.stats.fullSR;
         tempLength = data.menu.bm.time.full;
-        if (data.menu.mods.str.includes("DT")) {
+        if (data.tourney.ipcClients[0].gameplay.mods.str.includes("DT")) {
             tempLength = parseInt(tempLength) * 2 / 3;
         }
         let convertedLength = new Date(tempLength);
