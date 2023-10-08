@@ -395,53 +395,38 @@ socket.onmessage = (event) => {
             mapSR.innerHTML = `<p class="sr-text">SR</p>${numberToFixed(stars)}*`
             mapLength.innerHTML = `<p class="length-text">Length</p>${formatSeconds(length)}`
             mapDiffName.innerText = "[" + tempMapDiff + "]"
-        }).catch(console.error)
-
-        /*tempCS = data.menu.bm.stats.CS;
-        tempAR = data.menu.bm.stats.AR;
-        tempOD = data.menu.bm.stats.OD;
-        tempHP = data.menu.bm.stats.HP;
-        tempSR = data.menu.bm.stats.fullSR;
-        tempLength = data.menu.bm.time.full;
-        if (data.menu.mods.str.includes("DT")) {
-            tempLength = parseInt(tempLength) * 2 / 3;
-        }
-        let convertedLength = new Date(tempLength);
-        convertedLength = toMins(convertedLength);
-
-        tempBPM = data.menu.bm.stats.BPM.max;
-        if (data.menu.bm.stats.BPM.max !== data.menu.bm.stats.BPM.min)
-            tempBPM = `${data.menu.bm.stats.BPM.min} - ${data.menu.bm.stats.BPM.max}`;
-
-        mapName.innerText = tempMapTitle;
-        mapArtist.innerText = tempMapArtist
-        mapMapper.innerText = tempMapper
-        mapCS.innerHTML = "CS: " + tempCS
-        mapAR.innerHTML = "AR: " + tempAR
-        mapOD.innerHTML = "OD: " + tempOD
-        mapBPM.innerHTML = "BPM: " + tempBPM
-        mapSR.innerHTML = `<p class="sr-text">SR</p>${tempSR}*`
-        mapLength.innerHTML = `<p class="length-text">Length</p>${convertedLength}`
-        mapDiffName.innerText = "[" + tempMapDiff + "]"*/
-
-        /*if (beatmaps.findIndex(beatmap => beatmap.beatmapId == data.menu.bm.id) !== -1) {
-            currentPickTemp = !currentPickTemp
-            if (currentPickTemp === 0) {
-                currentPick.innerText = `Pick by ${team1}`
-                currentPick.style.backgroundColor = '#dc6868'
-                currentPick.style.opacity = 1
-            } else {
-                currentPick.innerText = `Pick by ${team2}`
-                currentPick.style.backgroundColor = '#335c67'
-                currentPick.style.opacity = 1
+        }).catch(err => {
+            // Use gosu stats in case we fail to get the map.
+            console.error(err)
+            tempCS = data.menu.bm.stats.CS;
+            tempAR = data.menu.bm.stats.AR;
+            tempOD = data.menu.bm.stats.OD;
+            tempHP = data.menu.bm.stats.HP;
+            tempSR = data.menu.bm.stats.fullSR;
+            tempLength = data.menu.bm.time.full;
+            if (data.menu.mods.str.includes("DT")) {
+                tempLength = parseInt(tempLength) * 2 / 3;
             }
-        }*/
+            let convertedLength = new Date(tempLength);
+            convertedLength = toMins(convertedLength);
 
-        // Why??????
-        /*setTimeout(() => {
-            togglePool(false);
-        }, 7270);*/
+            tempBPM = data.menu.bm.stats.BPM.max;
+            if (data.menu.bm.stats.BPM.max !== data.menu.bm.stats.BPM.min)
+                tempBPM = `${data.menu.bm.stats.BPM.min} - ${data.menu.bm.stats.BPM.max}`;
+
+            mapName.innerText = tempMapTitle;
+            mapArtist.innerText = tempMapArtist
+            mapMapper.innerText = tempMapper
+            mapCS.innerHTML = "CS: " + tempCS
+            mapAR.innerHTML = "AR: " + tempAR
+            mapOD.innerHTML = "OD: " + tempOD
+            mapBPM.innerHTML = "BPM: " + tempBPM
+            mapSR.innerHTML = `<p class="sr-text">SR</p>${tempSR}*`
+            mapLength.innerHTML = `<p class="length-text">Length</p>${convertedLength}`
+            mapDiffName.innerText = "[" + tempMapDiff + "]"
+        })
     }
+    
     if (bestOfTemp !== data.tourney.manager.bestOF) {
         bestOfTemp = data.tourney.manager.bestOF;
         containerLeft = document.getElementById("scoreContainerLeft");
