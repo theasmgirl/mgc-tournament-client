@@ -55,7 +55,7 @@ const players = [
         seed: "9"
     },
     {
-        player: "[MG24]Arnold24x24",
+        player: "[MG]Arnold24x24",
         seed: "10"
     },
     {
@@ -284,7 +284,7 @@ class Beatmap {
 
     processMouseOn() {
         if ((this.map.style.opacity != 1 && this.map.style.opacity != "") || this.status !== Status.None || this.interval !== null) return
-        this.map.style.opacity = 0.5
+        this.map.style.opacity = 1
         this.interval = setInterval(() => {
             if (this.map.style.opacity == 0.5) this.map.style.opacity = 1
             else if (this.map.style.opacity == 1) this.map.style.opacity = 0.5

@@ -59,6 +59,23 @@ let avaSet = false
 socket.onmessage = async (event) => {
     let data = JSON.parse(event.data);
 
+    if (
+        team1 !== data.tourney.manager.teamName.left &&
+        team2 !== data.tourney.manager.teamName.right
+    ) {
+        if (
+            data.tourney.manager.teamName.left !== "" &&
+            data.tourney.manager.teamName.right !== ""
+        ) {
+            team1 = data.tourney.manager.teamName.left;
+            team2 = data.tourney.manager.teamName.right;
+        } else {
+            team1 = "";
+            team2 = "";
+        }
+        avaSet = false;
+    }
+
     if(!avaSet) {
         setAvatar(data.tourney.manager.teamName.left, data.tourney.manager.teamName.right)
         avaSet = true
@@ -192,3 +209,24 @@ async function getDataSet(name) {
         console.error(error);
     }
 }
+
+document.body.addEventListener("mousedown", function () {
+    document.body.addEventListener("click", function (event) {
+        if(event.shiftKey) {
+            currentWinner = 0
+            main.style.backgroundImage = `url("./static/main/red.png")`
+            avatar.style.backgroundImage = `url("${ava1}?${Date.now()}")`
+            username.innerText = team1
+            stage.setAttribute("class", "winner-red")
+        }
+    });
+    document.body.addEventListener("contextmenu", function (event) {
+        if(event.shiftKey) {
+            currentWinner = 1
+            main.style.backgroundImage = `url("./static/main/blue.png")`
+            avatar.style.backgroundImage = `url("${ava2}?${Date.now()}")`
+            username.innerText = team2
+            stage.setAttribute("class", "winner-blue")
+        }
+    });
+});

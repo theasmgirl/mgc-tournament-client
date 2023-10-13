@@ -1,22 +1,25 @@
 [
-    { "beatmapId": 3019994, "mods": "NM", "Id": "NM1" },
-    { "beatmapId": 2069999, "mods": "NM", "Id": "NM2" },
-    { "beatmapId": 3721150, "mods": "NM", "Id": "NM3" },
-    { "beatmapId": 4073562, "mods": "NM", "Id": "NM4" },
-    { "beatmapId": 3792530, "mods": "NM", "Id": "NM5" },
-    { "beatmapId": 715044,  "mods": "NM", "Id": "NM6" },
+    { "beatmapId": 3104522, "mods": "NM", "Id": "NM1" },
+    { "beatmapId": 3238282, "mods": "NM", "Id": "NM2" },
+    { "beatmapId": 4238418, "mods": "NM", "Id": "NM3" },
+    { "beatmapId": 3381891, "mods": "NM", "Id": "NM4" },
+    { "beatmapId": 1363026, "mods": "NM", "Id": "NM5" },
+    { "beatmapId": 3996029, "mods": "NM", "Id": "NM6" },
 
-    { "beatmapId": 4186126, "mods": "HD", "Id": "HD1" },
-    { "beatmapId": 4267100, "mods": "HD", "Id": "HD2" },
-    { "beatmapId": 3075536, "mods": "HD", "Id": "HD3" },
+    { "beatmapId": 3638394, "mods": "HD", "Id": "HD1" },
+    { "beatmapId": 1286241, "mods": "HD", "Id": "HD2" },
+    { "beatmapId": 4019707, "mods": "HD", "Id": "HD3" },
+    { "beatmapId": 1623173, "mods": "HD", "Id": "HD4" },
 
-    { "beatmapId": 281390,  "mods": "HR", "Id": "HR1" },
-    { "beatmapId": 1424660, "mods": "HR", "Id": "HR2" },
-    { "beatmapId": 4329073, "mods": "HR", "Id": "HR3" },
+    { "beatmapId": 4336453, "mods": "HR", "Id": "HR1" },
+    { "beatmapId": 4336435, "mods": "HR", "Id": "HR2" },
+    { "beatmapId": 1492654, "mods": "HR", "Id": "HR3" },
+    { "beatmapId": 4336670, "mods": "HR", "Id": "HR4" },
 
-    { "beatmapId": 3801465, "mods": "DT", "Id": "DT1" },
-    { "beatmapId": 2125262, "mods": "DT", "Id": "DT2" },
-    { "beatmapId": 93947,   "mods": "DT", "Id": "DT3" },
+    { "beatmapId": 3307953, "mods": "DT", "Id": "DT1" },
+    { "beatmapId": 249517,  "mods": "DT", "Id": "DT2" },
+    { "beatmapId": 39209,   "mods": "DT", "Id": "DT3" },
+    { "beatmapId": 4336217, "mods": "DT", "Id": "DT4" },
 
-    { "beatmapId": 3481587, "mods": "TB", "Id": "TB"  }
+    { "beatmapId": 3229091, "mods": "TB", "Id": "TB"  }
 ]

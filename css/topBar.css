@@ -25,6 +25,7 @@
 .teamName {
 	position: absolute;
 	font-family: Rowdies;
+	font-weight: 500 !important;
 	bottom: 30px;
 	padding: 5px 0;
 	height: 50px;
@@ -139,7 +140,7 @@
 	border-radius: 25px;
 	position: absolute;
 	font-family: Rowdies;
-	font-weight: 500 !important;
+	font-weight: 100 !important;
 	font-size: 20px;
 	text-align: center;
 	padding: 5px 0px;

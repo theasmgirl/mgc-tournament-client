@@ -720,23 +720,19 @@ async function getDataSet(name) {
 }
 
 async function getBeatmapAttributes(beatmapId, mods) {
-    try {
-        if (!api) await getAPI()
+    if (!api) await getAPI()
 
-        const data = (
-            await axios.get("/get_beatmaps", {
-                baseURL: "https://osu.ppy.sh/api",
-                params: {
-                    k: api,
-                    b: beatmapId,
-                    mods: mods
-                },
-            })
-        )["data"];
-        return data.length !== 0 ? data[0] : null;
-    } catch (error) {
-        console.error(error);
-    }
+    const data = (
+        await axios.get("/get_beatmaps", {
+            baseURL: "https://osu.ppy.sh/api",
+            params: {
+                k: api,
+                b: beatmapId,
+                mods: mods
+            },
+        })
+    )["data"];
+    return data.length !== 0 ? data[0] : null;
 }
 
 async function iFrameInitiate() {
@@ -804,6 +800,10 @@ document.body.addEventListener("mousedown", function () {
     document.body.addEventListener("click", function (event) {
         if (event.ctrlKey) {
             currentPick.style.opacity = 0
+        } else if(event.shiftKey) {
+            currentPick.innerText = `Tiebreaker`
+            currentPick.style.backgroundColor = '#69a150'
+            currentPick.style.opacity = 1
         } else {
             currentPick.innerText = `Pick by ${team1}`
             currentPick.style.backgroundColor = '#dc6868'
@@ -814,7 +814,11 @@ document.body.addEventListener("mousedown", function () {
     document.body.addEventListener("contextmenu", function (event) {
         if (event.ctrlKey) {
             currentPick.style.opacity = 0
-        } else {
+        } else if(event.shiftKey) {
+            currentPick.innerText = `Tiebreaker`
+            currentPick.style.backgroundColor = '#69a150'
+            currentPick.style.opacity = 1
+        }  else {
             currentPick.innerText = `Pick by ${team2}`
             currentPick.style.backgroundColor = '#335c67'
             currentPick.style.opacity = 1
