@@ -27,7 +27,7 @@ const players = [
         seed: "2"
     },
     {
-        player: "enri",
+        player: "hyeok2045",
         seed: "3"
     },
     {
