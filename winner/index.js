@@ -56,6 +56,10 @@ let ava1 = "",
 
 let avaSet = false
 
+const alternativeNames = {
+    "hyeok2045": "enri"
+}
+
 socket.onmessage = async (event) => {
     let data = JSON.parse(event.data);
 
@@ -85,13 +89,13 @@ socket.onmessage = async (event) => {
         currentWinner = 0
         main.style.backgroundImage = `url("./static/main/red.png")`
         avatar.style.backgroundImage = `url("${ava1}")`
-        username.innerText = data.tourney.manager.teamName.left
+        username.innerText = alternativeNames[data.tourney.manager.teamName.left] ?? data.tourney.manager.teamName.left
         stage.setAttribute("class", "winner-red")
     } else if(data.tourney.manager.stars.left < data.tourney.manager.stars.right && currentWinner !== 1) {
         currentWinner = 1
         main.style.backgroundImage = `url("./static/main/blue.png")`
         avatar.style.backgroundImage = `url("${ava2}")`
-        username.innerText = data.tourney.manager.teamName.right
+        username.innerText = alternativeNames[data.tourney.manager.teamName.right] ?? data.tourney.manager.teamName.right
         stage.setAttribute("class", "winner-blue")
     }
 
@@ -216,7 +220,7 @@ document.body.addEventListener("mousedown", function () {
             currentWinner = 0
             main.style.backgroundImage = `url("./static/main/red.png")`
             avatar.style.backgroundImage = `url("${ava1}?${Date.now()}")`
-            username.innerText = team1
+            username.innerText = alternativeNames[team1] ?? team1
             stage.setAttribute("class", "winner-red")
         }
     });
@@ -225,7 +229,7 @@ document.body.addEventListener("mousedown", function () {
             currentWinner = 1
             main.style.backgroundImage = `url("./static/main/blue.png")`
             avatar.style.backgroundImage = `url("${ava2}?${Date.now()}")`
-            username.innerText = team2
+            username.innerText = alternativeNames[team2] ?? team2
             stage.setAttribute("class", "winner-blue")
         }
     });

@@ -1,25 +1,25 @@
 [
-    { "beatmapId": 3104522, "mods": "NM", "Id": "NM1" },
-    { "beatmapId": 3238282, "mods": "NM", "Id": "NM2" },
-    { "beatmapId": 4238418, "mods": "NM", "Id": "NM3" },
-    { "beatmapId": 3381891, "mods": "NM", "Id": "NM4" },
-    { "beatmapId": 1363026, "mods": "NM", "Id": "NM5" },
-    { "beatmapId": 3996029, "mods": "NM", "Id": "NM6" },
+    { "beatmapId": 2791233, "mods": "NM", "Id": "NM1" },
+    { "beatmapId": 4344782, "mods": "NM", "Id": "NM2" },
+    { "beatmapId": 4081860, "mods": "NM", "Id": "NM3" },
+    { "beatmapId": 3725672, "mods": "NM", "Id": "NM4" },
+    { "beatmapId": 974352,  "mods": "NM", "Id": "NM5" },
+    { "beatmapId": 1566379, "mods": "NM", "Id": "NM6" },
 
-    { "beatmapId": 3638394, "mods": "HD", "Id": "HD1" },
-    { "beatmapId": 1286241, "mods": "HD", "Id": "HD2" },
-    { "beatmapId": 4019707, "mods": "HD", "Id": "HD3" },
-    { "beatmapId": 1623173, "mods": "HD", "Id": "HD4" },
+    { "beatmapId": 224127,  "mods": "HD", "Id": "HD1" },
+    { "beatmapId": 3370732, "mods": "HD", "Id": "HD2" },
+    { "beatmapId": 4131030, "mods": "HD", "Id": "HD3" },
+    { "beatmapId": 3904576, "mods": "HD", "Id": "HD4" },
 
-    { "beatmapId": 4336453, "mods": "HR", "Id": "HR1" },
-    { "beatmapId": 4336435, "mods": "HR", "Id": "HR2" },
-    { "beatmapId": 1492654, "mods": "HR", "Id": "HR3" },
-    { "beatmapId": 4336670, "mods": "HR", "Id": "HR4" },
+    { "beatmapId": 3879889, "mods": "HR", "Id": "HR1" },
+    { "beatmapId": 1556011, "mods": "HR", "Id": "HR2" },
+    { "beatmapId": 3359755, "mods": "HR", "Id": "HR3" },
+    { "beatmapId": 3606794, "mods": "HR", "Id": "HR4" },
 
-    { "beatmapId": 3307953, "mods": "DT", "Id": "DT1" },
-    { "beatmapId": 249517,  "mods": "DT", "Id": "DT2" },
-    { "beatmapId": 39209,   "mods": "DT", "Id": "DT3" },
-    { "beatmapId": 4336217, "mods": "DT", "Id": "DT4" },
+    { "beatmapId": 4344814, "mods": "DT", "Id": "DT1" },
+    { "beatmapId": 1007546, "mods": "DT", "Id": "DT2" },
+    { "beatmapId": 226279,  "mods": "DT", "Id": "DT3" },
+    { "beatmapId": 916972,  "mods": "DT", "Id": "DT4" },
 
-    { "beatmapId": 3229091, "mods": "TB", "Id": "TB"  }
+    { "beatmapId": 2958956, "mods": "TB", "Id": "TB"  }
 ]

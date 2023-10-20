@@ -28,6 +28,13 @@ const players = [
     },
     {
         player: "hyeok2045",
+<<<<<<< Updated upstream
+=======
+        seed: "3"
+    },
+    {
+        player: "enri",
+>>>>>>> Stashed changes
         seed: "3"
     },
     {
@@ -83,6 +90,10 @@ const players = [
         seed: "16"
     }
 ]
+
+const alternativeNames = {
+    "hyeok2045": "enri"
+}
 
 // Not smart decision due to DOM loading before .json which resulting in API request being made without API key and failing.
 //getAPI();
@@ -328,11 +339,11 @@ socket.onmessage = async (event) => {
 
     if (teamNameLeftTemp !== data.tourney.manager.teamName.left) {
         teamNameLeftTemp = data.tourney.manager.teamName.left;
-        teamLeftName.innerHTML = teamNameLeftTemp;
+        teamLeftName.innerHTML = alternativeNames[teamNameLeftTemp] ?? teamNameLeftTemp;
     }
     if (teamNameRightTemp !== data.tourney.manager.teamName.right) {
         teamNameRightTemp = data.tourney.manager.teamName.right;
-        teamRightName.innerHTML = teamNameRightTemp;
+        teamRightName.innerHTML = alternativeNames[teamNameRightTemp] ?? teamNameRightTemp;
     }
 
     if (!avaSet) {

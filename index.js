@@ -40,6 +40,13 @@ const players = [
     },
     {
         player: "hyeok2045",
+<<<<<<< Updated upstream
+=======
+        seed: "3"
+    },
+    {
+        player: "enri",
+>>>>>>> Stashed changes
         seed: "3"
     },
     {
@@ -95,6 +102,10 @@ const players = [
         seed: "16"
     }
 ]
+
+const alternativeNames = {
+    "hyeok2045": "enri"
+}
 
 // const queryString = window.location.search;
 // const urlParams = new URLSearchParams(queryString);
@@ -252,6 +263,10 @@ function formatSeconds(seconds) {
     return (h > 0) ? (hs + ':' + ms + ':' + ss) : (ms + ':' + ss)
 }
 
+function usernameCheck(username) {
+    return alternativeNames[username] ?? username
+}
+
 socket.onmessage = (event) => {
     let data = JSON.parse(event.data);
     /*setTimeout(() => {
@@ -333,11 +348,11 @@ socket.onmessage = (event) => {
 
         currentPickTemp = !currentPickTemp
         if (currentPickTemp === false) {
-            currentPick.innerText = `Pick by ${team1}`
+            currentPick.innerText = `Pick by ${usernameCheck(team1)}`
             currentPick.style.backgroundColor = '#dc6868'
             currentPick.style.opacity = 1
         } else {
-            currentPick.innerText = `Pick by ${team2}`
+            currentPick.innerText = `Pick by ${usernameCheck(team2)}`
             currentPick.style.backgroundColor = '#335c67'
             currentPick.style.opacity = 1
         }
@@ -507,11 +522,11 @@ socket.onmessage = (event) => {
 
     if (teamNameLeftTemp !== data.tourney.manager.teamName.left) {
         teamNameLeftTemp = data.tourney.manager.teamName.left;
-        teamLeftName.innerHTML = teamNameLeftTemp;
+        teamLeftName.innerHTML = usernameCheck(teamNameLeftTemp);
     }
     if (teamNameRightTemp !== data.tourney.manager.teamName.right) {
         teamNameRightTemp = data.tourney.manager.teamName.right;
-        teamRightName.innerHTML = teamNameRightTemp;
+        teamRightName.innerHTML = usernameCheck(teamNameRightTemp);
     }
 
     if (!avaSet && tournamentDebugger === 0) {
@@ -805,7 +820,7 @@ document.body.addEventListener("mousedown", function () {
             currentPick.style.backgroundColor = '#69a150'
             currentPick.style.opacity = 1
         } else {
-            currentPick.innerText = `Pick by ${team1}`
+            currentPick.innerText = `Pick by ${usernameCheck(team1)}`
             currentPick.style.backgroundColor = '#dc6868'
             currentPick.style.opacity = 1
             currentPickTemp = false
@@ -819,7 +834,7 @@ document.body.addEventListener("mousedown", function () {
             currentPick.style.backgroundColor = '#69a150'
             currentPick.style.opacity = 1
         }  else {
-            currentPick.innerText = `Pick by ${team2}`
+            currentPick.innerText = `Pick by ${usernameCheck(team2)}`
             currentPick.style.backgroundColor = '#335c67'
             currentPick.style.opacity = 1
             currentPickTemp = true
