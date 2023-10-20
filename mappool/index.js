@@ -28,13 +28,10 @@ const players = [
     },
     {
         player: "hyeok2045",
-<<<<<<< Updated upstream
-=======
         seed: "3"
     },
     {
         player: "enri",
->>>>>>> Stashed changes
         seed: "3"
     },
     {
