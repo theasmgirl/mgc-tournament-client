@@ -317,8 +317,6 @@ let team1 = "",
 socket.onmessage = async (event) => {
     let data = JSON.parse(event.data);
 
-
-
     if (
         team1 !== data.tourney.manager.teamName.left &&
         team2 !== data.tourney.manager.teamName.right
@@ -422,7 +420,7 @@ socket.onmessage = async (event) => {
 
     if (chatLen != data.tourney.manager?.chat?.length && data.tourney.manager?.chat !== null) {
         // There's new chats that haven't been updated
-        console.log(data.tourney.manager.chat);
+        //console.log(data.tourney.manager.chat);
         if (
             chatLen == 0 ||
             (chatLen > 0 && chatLen > data.tourney.manager.chat.length)
