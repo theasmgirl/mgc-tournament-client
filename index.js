@@ -666,7 +666,7 @@ socket.onmessage = (event) => {
 
                 chatTime.innerText = data.tourney.manager.chat[i].time;
                 chatName.innerText =
-                    data.tourney.manager.chat[i].name + ":\xa0";
+                    usernameCheck(data.tourney.manager.chat[i].name) + ":\xa0";
                 chatText.innerText = data.tourney.manager.chat[i].messageBody;
 
                 /*if (

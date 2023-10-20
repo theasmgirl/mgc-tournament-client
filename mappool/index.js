@@ -317,6 +317,8 @@ let team1 = "",
 socket.onmessage = async (event) => {
     let data = JSON.parse(event.data);
 
+
+
     if (
         team1 !== data.tourney.manager.teamName.left &&
         team2 !== data.tourney.manager.teamName.right
@@ -449,7 +451,7 @@ socket.onmessage = async (event) => {
 
             chatTime.innerText = data.tourney.manager.chat[i].time;
             chatName.innerText =
-                data.tourney.manager.chat[i].name + ":\xa0";
+                (alternativeNames[data.tourney.manager.chat[i].name] ?? data.tourney.manager.chat[i].name) + ":\xa0";
             chatText.innerText = data.tourney.manager.chat[i].messageBody;
 
             /*if (
