@@ -538,7 +538,7 @@ async function setupBeatmaps() {
         bm.clicker.addEventListener("mousedown", function () {
             bm.clicker.addEventListener("click", function (event) {
                 if (event.shiftKey) {
-                    bm.mapPickBan.innerHTML = `<p>Banned by<br /><span class="username">${team1}</span></p>`
+                    bm.mapPickBan.innerHTML = `<p>Banned by<br /><span class="username">${alternativeNames[team1] ?? team1}</span></p>`
                     bm.mapPickBan.style.opacity = 1
                     bm.mapPickBan.style.backgroundColor = 'rgba(160, 17, 17, 0.6)'
                     bm.mapPickBan.style.border = '2px solid rgba(135, 16, 16, 0.6)'
@@ -550,7 +550,7 @@ async function setupBeatmaps() {
                     bm.map.style.opacity = 1
                     bm.status = Status.None
                 } else {
-                    bm.mapPickBan.innerHTML = `<p>Picked by<br /><span class="username">${team1}</span></p>`
+                    bm.mapPickBan.innerHTML = `<p>Picked by<br /><span class="username">${alternativeNames[team1] ?? team1}</span></p>`
                     bm.mapPickBan.style.opacity = 1
                     bm.mapPickBan.style.backgroundColor = 'rgba(160, 17, 17, 0.7)'
                     bm.mapPickBan.style.border = '2px solid #871010'
@@ -564,7 +564,7 @@ async function setupBeatmaps() {
             });
             bm.clicker.addEventListener("contextmenu", function (event) {
                 if (event.shiftKey) {
-                    bm.mapPickBan.innerHTML = `<p>Banned by<br /><span class="username">${team2}</span></p>`
+                    bm.mapPickBan.innerHTML = `<p>Banned by<br /><span class="username">${alternativeNames[team2] ?? team2}</span></p>`
                     bm.mapPickBan.style.opacity = 1
                     bm.mapPickBan.style.backgroundColor = 'rgba(20, 17, 160, 0.7)'
                     bm.mapPickBan.style.border = '2px solid rgba(19, 16, 135, 0.7)'
@@ -576,7 +576,7 @@ async function setupBeatmaps() {
                     bm.map.style.opacity = 1
                     bm.status = Status.None
                 } else {
-                    bm.mapPickBan.innerHTML = `<p>Picked by<br /><span class="username">${team2}</span></p>`
+                    bm.mapPickBan.innerHTML = `<p>Picked by<br /><span class="username">${alternativeNames[team2] ?? team2}</span></p>`
                     bm.mapPickBan.style.opacity = 1
                     bm.mapPickBan.style.backgroundColor = 'rgba(20, 17, 160, 0.7)'
                     bm.mapPickBan.style.border = '2px solid #131087'
@@ -592,10 +592,24 @@ async function setupBeatmaps() {
         const mapData = await getDataSet(beatmap.beatmapId);
 
         bm.mapThumbnail.style.backgroundImage = `url('https://assets.ppy.sh/beatmaps/${mapData.beatmapset_id}/covers/cover.jpg')`;
-        bm.mapArtist.innerText = mapData.artist
+        bm.mapArtist.innerText = bm.beatmapID === 4352488 ? "KurousaP" : mapData.artist
         bm.mapDifficulty.innerText = `[${mapData.version}]`
         bm.mapMapper.innerText = mapData.creator
         bm.mapTitle.innerText = mapData.title
+
+        /*if(bm.beatmapID === 4352488) {
+            let showMiku = false;
+            setInterval(() => {
+                showMiku = !showMiku
+
+                bm.mapArtist.style.opacity = 0.4
+                setTimeout(() => {
+                    if(showMiku) bm.mapArtist.innerText = "feat. Hatsune Miku"
+                    else bm.mapArtist.innerText = "KurousaP"
+                    bm.mapArtist.style.opacity = 1
+                }, 500)
+            }, 20000)
+        }*/
 
         /*bm.map.style.backgroundImage = `url('https://assets.ppy.sh/beatmaps/${mapData.beatmapset_id}/covers/cover.jpg')`;
         bm.metadata.innerHTML = mapData.artist + " - " + mapData.title;
